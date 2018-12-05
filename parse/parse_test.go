@@ -109,6 +109,15 @@ var tests = []struct {
 		types:       []map[string]string{{"SomeThing": "string"}},
 		expectedOut: `test/bugreports/negation_string.go`,
 	},
+	{
+		filename: "receiver_generic.go",
+		in:       `test/bugreports/receiver_generic.go`,
+		types: []map[string]string{
+			{"TA": "string", "TB": "int"},
+			{"TA": "string", "TB": "float64"},
+		},
+		expectedOut: `test/bugreports/receiver_concrete.go`,
+	},
 }
 
 func TestParse(t *testing.T) {
